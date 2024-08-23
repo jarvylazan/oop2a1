@@ -1,4 +1,4 @@
-package com.champlain.oop2lab1;
+package com.champlain.oop2a1;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

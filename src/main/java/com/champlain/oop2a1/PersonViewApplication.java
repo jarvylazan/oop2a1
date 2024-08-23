@@ -1,4 +1,4 @@
-package com.champlain.oop2lab1;
+package com.champlain.oop2a1;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

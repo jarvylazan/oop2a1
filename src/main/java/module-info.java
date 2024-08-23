@@ -3,6 +3,6 @@ module com.champlain.oop2lab1 {
     requires javafx.fxml;
 
 
-    opens com.champlain.oop2lab1 to javafx.fxml;
-    exports com.champlain.oop2lab1;
+    opens com.champlain.oop2a1 to javafx.fxml;
+    exports com.champlain.oop2a1;
 }
