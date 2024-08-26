@@ -24,20 +24,31 @@ public class PersonViewController {
         if (this.aPerson == null) {
             this.aPerson = new Person();
         }
-        this.aPerson.setName(aNameTextField.getText());
-        this.aPerson.setEmailAddress(aEmailAddressTextField.getText());
-        this.aPerson.setPhoneNumber(aPhoneNumberTextField.getText());
+        try {
+            this.aPerson.setName(aNameTextField.getText());
+            this.aPerson.setEmailAddress(aEmailAddressTextField.getText());
+            this.aPerson.setPhoneNumber(aPhoneNumberTextField.getText());
+        } catch (IllegalArgumentException e) {
+            handleInputError(e);
+            return;
+        }
+
         this.displayPerson(this.aPerson);
-        Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION, "Entered data saved successfully!");
-        errorAlert.showAndWait();
+        Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION, "Entered data saved successfully!");
+        successAlert.showAndWait();
     }
 
     @FXML
     protected void onLoadExampleButtonClick() {
         this.aPerson = new Person();
-        this.aPerson.setName("John Doe");
-        this.aPerson.setPhoneNumber("(819) 555-0123");
-        this.aPerson.setEmailAddress("john@gmail.com");
+        try {
+            this.aPerson.setName("John Doe");
+            this.aPerson.setPhoneNumber("(819) 555-0123");
+            this.aPerson.setEmailAddress("john@gmail.com");
+        } catch (IllegalArgumentException e) {
+            handleInputError(e);
+        }
+
         this.displayPerson(this.aPerson);
     }
 
@@ -68,5 +79,10 @@ public class PersonViewController {
             aParkingPassLabel.setText("This person does not have a parking pass!");
             aParkingPassLabel.setTextFill(Color.color(1, 0, 0));
         }
+    }
+
+    private void handleInputError(IllegalArgumentException e) {
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Entered data invalid: " + e.getMessage());
+        errorAlert.showAndWait();
     }
 }
