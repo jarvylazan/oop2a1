@@ -21,20 +21,20 @@ public class Person {
         aPassStatus = pPassStatus;
     }
 
-    public void setName(String text) {
-        aName = text;
+    public void setName(String pName) {
+        aName = pName;
     }
 
-    public void setEmailAddress(String text) {
-        if (text.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            aEmailAddress = text;
+    public void setEmailAddress(String pEmailAddress) {
+        if (pEmailAddress.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            aEmailAddress = pEmailAddress;
         } else {
-            throw new IllegalArgumentException("\"" + text + "\" is not a valid email address.");
+            throw new IllegalArgumentException("\"" + pEmailAddress + "\" is not a valid email address.");
         }
     }
 
-    public void setPhoneNumber(String text) {
-        aPhoneNumber = text;
+    public void setPhoneNumber(String pPhoneNumber) {
+        aPhoneNumber = pPhoneNumber;
     }
 
     public boolean PurchaseParkingPass() {
