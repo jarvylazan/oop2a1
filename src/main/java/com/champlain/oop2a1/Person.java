@@ -15,7 +15,7 @@ public class Person {
     /**
      * Default constructor for the Person class.
      * Initializes the name, email address, and phone number to empty strings,
-     * and the parking pass status to false.
+     * and not have the parking pass by default.
      */
     public Person() {
         aName = "";
@@ -25,7 +25,8 @@ public class Person {
     }
 
     /**
-     * Parameterized constructor for the Person class.
+     * Parameterized constructor for the Person class, permitting
+     * initialization of an instant of a Person with a set of attributes.
      *
      * @param pName         the name of the person.
      * @param pEmailAddress the email address of the person.
@@ -36,7 +37,7 @@ public class Person {
         aName = pName;
         aPhoneNumber = pPhoneNumber;
         if (!pEmailAddress.isEmpty()) {
-        validateEmailAddress(pEmailAddress);
+            validateEmailAddress(pEmailAddress);
         }
         // Assign the email nonetheless, so it will be shown in the textbox.
         aEmailAddress = pEmailAddress;
@@ -53,8 +54,18 @@ public class Person {
     }
 
     /**
+     * Sets the phone number of the person.
+     *
+     * @param pPhoneNumber the phone number to set phone number from the text field.
+     */
+    public void setPhoneNumber(String pPhoneNumber) {
+        aPhoneNumber = pPhoneNumber;
+    }
+
+    /**
      * Sets the email address of the person.
      * Validates the email address format before setting it.
+     * An empty email address is considered valid.
      *
      * @param pEmailAddress the email address to set.
      * @throws IllegalArgumentException if the email address is not in a valid format.
@@ -65,23 +76,16 @@ public class Person {
         }
     }
 
-    /**
-     * Sets the phone number of the person.
-     *
-     * @param pPhoneNumber the phone number to set.
-     */
-    public void setPhoneNumber(String pPhoneNumber) {
-        aPhoneNumber = pPhoneNumber;
-    }
 
     /**
      * Purchases a parking pass for the person.
+     * If the person already has a parking pass, it does not change the status.
      *
-     * @return true after the parking pass is purchased.
+     * @return true if the parking pass is already purchased, otherwise false.
      */
     public boolean PurchaseParkingPass() {
         if (!aPassStatus) {
-        return aPassStatus = true;
+            return aPassStatus = true;
         } else {
             return false;
         }
@@ -124,13 +128,13 @@ public class Person {
     }
 
     /**
-     * Checks if the email address passed into the class is valid and
-     * throws an exception if it is not.
+     * Validates the email address format.
+     * Throws an exception if the email address is invalid.
      *
      * @param pEmailAddress the email address to validate.
-     * @throws IllegalArgumentException if the email address is invalid
+     * @return true if the email address is valid.
+     * @throws IllegalArgumentException if the email address is not in a valid format.
      */
-
     private boolean validateEmailAddress(String pEmailAddress) {
         if (pEmailAddress.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             return true;
